@@ -5,5 +5,5 @@ import retrofit2.http.GET
 
 interface TodoApi {
     @GET("todos")
-    suspend fun getTodo(): List<TodoData>
+    suspend fun getTodo(): TodoData
 }

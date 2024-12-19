@@ -44,7 +44,7 @@ class TodoViewModel @Inject constructor(
         viewModelScope.launch {
             try {
                 val response = todoRepository.getTodo()
-                _apiTodos.postValue(response as TodoData)
+                _apiTodos.postValue(response)
             } catch (e: Exception) {
                 e.printStackTrace()
             }

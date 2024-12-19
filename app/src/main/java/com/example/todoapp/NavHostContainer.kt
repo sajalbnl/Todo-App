@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -26,9 +27,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.graphics.toColorInt
+import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
@@ -54,7 +58,7 @@ fun NavHostContainer(
             composable("addTask") {
                 AddTaskScreen(navController)
             }
-            composable("alltasks") {
+            composable("allTasks") {
                 AllTaskScreen(navController)
             }
         }
@@ -145,5 +149,27 @@ fun AddItem(
                 )
             }
         }
+    }
+}
+
+@Composable
+fun TopBar(navController: NavController){
+    Row(modifier= Modifier.fillMaxWidth().background(Color("#ffffff".toColorInt())).padding(top=50.dp,start=30.dp,end=30.dp), horizontalArrangement = Arrangement.Center, verticalAlignment = Alignment.CenterVertically) {
+        Text(
+            text = "Hey Sajal",
+            modifier = Modifier.padding(top=5.dp),
+            textAlign = TextAlign.Center,
+            fontWeight = FontWeight.Bold,
+            fontSize = 40.sp,
+            fontFamily = publicsansBold,
+            color = Color("#000000".toColorInt()),
+        )
+        Spacer(modifier=Modifier.weight(1f))
+        Image(
+            painterResource(R.drawable.profile),
+            contentDescription = "",
+            modifier = Modifier
+                .width(50.dp)
+        )
     }
 }

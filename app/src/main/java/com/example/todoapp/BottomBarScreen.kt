@@ -15,7 +15,7 @@ sealed class BottomBarScreen(
     )
 
     object Tasks : BottomBarScreen(
-        "alltasks",
+        "allTasks",
         title = "All Task",
         icon = R.drawable.todo_list,
         icon_focused = R.drawable.todo_list_active

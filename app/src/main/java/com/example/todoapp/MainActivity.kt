@@ -11,6 +11,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
@@ -21,8 +22,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.graphics.toColorInt
 import androidx.navigation.compose.rememberNavController
 import com.example.todoapp.ui.theme.TodoAppTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+    private lateinit var currentDestination: MutableState<String>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -30,17 +34,16 @@ class MainActivity : ComponentActivity() {
             val navController = rememberNavController()
             TodoAppTheme {
                 window.navigationBarColor = colorScheme.background.toArgb()
-           //     currentDestination = remember { mutableStateOf("") }
+                currentDestination = remember { mutableStateOf("") }
 
                 Surface(modifier = Modifier.fillMaxSize(), color = Color("#ffffff".toColorInt())) {
-//                    val context = LocalContext.current
-//                    navController.addOnDestinationChangedListener { _, destination, _ ->
-//                        currentDestination.value = destination.route ?: ""
-//                    }
-//                    val showTopBar = currentDestination.value in listOf("home", "allProducts")
+                    navController.addOnDestinationChangedListener { _, destination, _ ->
+                        currentDestination.value = destination.route ?: ""
+                    }
+                    val showTopBar = currentDestination.value in listOf("addTask")
 
                     Scaffold(
-                       // topBar = {if (showTopBar)TopBar(navController=navController)},
+                        topBar = {if (showTopBar)TopBar(navController=navController)},
                         bottomBar = { BottomBar(navController = navController) },
                         content = { padding ->
                             NavHostContainer(

@@ -8,7 +8,7 @@ class TodoRepository @Inject constructor(
     private val todoApi: TodoApi
 ) {
 
-    suspend fun getTodo(): List<TodoData> {
+    suspend fun getTodo(): TodoData {
         return todoApi.getTodo()
     }
 }
