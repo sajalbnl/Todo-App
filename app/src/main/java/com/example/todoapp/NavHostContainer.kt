@@ -52,9 +52,12 @@ fun NavHostContainer(
 ) {
     NavHost(
         navController = navController,
-        startDestination = "addTask",
+        startDestination = "splash",
         modifier = Modifier.padding(paddingValues = padding),
         builder = {
+            composable(route = "splash") {
+                AnimatedSplashScreen(navController = navController)
+            }
             composable("addTask") {
                 AddTaskScreen(navController)
             }

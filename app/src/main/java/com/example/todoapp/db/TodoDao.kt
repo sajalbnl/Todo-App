@@ -19,6 +19,9 @@ interface TodoDao {
     @Delete
     suspend fun delete(todo: Todo)
 
+    @Query("UPDATE todo_table SET isCompleted = :isCompleted WHERE id = :id")
+    suspend fun updateIsCompleted(id: Int, isCompleted: Boolean)
+
     @Query("SELECT * FROM todo_table")
     fun getAllTodos(): LiveData<List<Todo>>
 }

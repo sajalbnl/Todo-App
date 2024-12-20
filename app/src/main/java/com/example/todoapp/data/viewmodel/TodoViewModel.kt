@@ -40,6 +40,13 @@ class TodoViewModel @Inject constructor(
         }
     }
 
+    fun updateIsCompleted(id: Int, isCompleted: Boolean) {
+        viewModelScope.launch {
+            todoDao.updateIsCompleted(id, isCompleted)
+        }
+    }
+
+
     fun fetchTodosFromApi() {
         viewModelScope.launch {
             try {

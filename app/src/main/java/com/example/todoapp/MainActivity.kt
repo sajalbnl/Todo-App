@@ -20,6 +20,7 @@ import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.graphics.toColorInt
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.compose.rememberNavController
 import com.example.todoapp.ui.theme.TodoAppTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -41,10 +42,11 @@ class MainActivity : ComponentActivity() {
                         currentDestination.value = destination.route ?: ""
                     }
                     val showTopBar = currentDestination.value in listOf("addTask")
+                    val showBottomBar=currentDestination.value in listOf("addTask","allTasks")
 
                     Scaffold(
                         topBar = {if (showTopBar)TopBar(navController=navController)},
-                        bottomBar = { BottomBar(navController = navController) },
+                        bottomBar = { if(showBottomBar)BottomBar(navController = navController) },
                         content = { padding ->
                             NavHostContainer(
                                 navController = navController, padding = padding

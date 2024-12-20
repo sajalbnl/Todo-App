@@ -1,5 +1,6 @@
 package com.example.todoapp.ui
 
+import android.widget.Toast
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -27,8 +28,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.ColorFilter
-import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -51,6 +50,8 @@ import androidx.compose.ui.graphics.Color.Companion.Transparent
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.todoapp.data.model.Todo
+import com.example.todoapp.data.viewmodel.TodoViewModel
 import com.example.todoapp.utils.publicsansRegular
 import com.example.todoapp.utils.publicsansSemiBold
 
@@ -63,6 +64,7 @@ fun AddTaskScreen(navController: NavController) {
     var isDesError by rememberSaveable { mutableStateOf(false) }
     var title by rememberSaveable { mutableStateOf("") }
     var description by rememberSaveable { mutableStateOf("") }
+    val todoViewModel = hiltViewModel<TodoViewModel>()
 
     Column(modifier = Modifier.fillMaxSize().verticalScroll(rememberScrollState()).background(Color("#ffffff".toColorInt())).padding(10.dp), verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally) {
 
@@ -218,6 +220,12 @@ fun AddTaskScreen(navController: NavController) {
                         }else{
                             isDesError=false
                             isTitleError=false
+                            todoViewModel.insert(Todo(title=title,
+                                description=description))
+                            title=""
+                            description=""
+
+                            Toast.makeText(context, "Task Added", Toast.LENGTH_SHORT).show()
                         }
                     }
                 ) {
