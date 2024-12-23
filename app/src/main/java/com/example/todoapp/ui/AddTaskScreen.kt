@@ -1,6 +1,8 @@
 package com.example.todoapp.ui
 
+import android.os.Build
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -55,6 +57,7 @@ import com.example.todoapp.data.viewmodel.TodoViewModel
 import com.example.todoapp.utils.publicsansRegular
 import com.example.todoapp.utils.publicsansSemiBold
 
+@RequiresApi(Build.VERSION_CODES.O)
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AddTaskScreen(navController: NavController) {

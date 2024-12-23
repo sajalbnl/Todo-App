@@ -2,7 +2,9 @@ package com.example.todoapp.ui
 
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.os.Build
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.animateFloat
@@ -100,6 +102,7 @@ import com.example.todoapp.data.model.Todo
 import kotlin.random.Random
 
 
+@RequiresApi(Build.VERSION_CODES.O)
 @SuppressLint("SimpleDateFormat")
 @Composable
 fun AllTaskScreen(navController: NavController) {
