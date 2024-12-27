@@ -1,6 +1,5 @@
 package com.example.todoapp.data.model
 
-import android.accessibilityservice.GestureDescription
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 

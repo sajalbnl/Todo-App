@@ -106,7 +106,6 @@ import kotlin.random.Random
 @SuppressLint("SimpleDateFormat")
 @Composable
 fun AllTaskScreen(navController: NavController) {
-    val context = LocalContext.current
     val todoViewModel = hiltViewModel<TodoViewModel>()
     val todoList by todoViewModel.apiTodos.observeAsState(emptyList())
     val sdf = SimpleDateFormat("EEEE, dd MMMM", Locale.ENGLISH)
