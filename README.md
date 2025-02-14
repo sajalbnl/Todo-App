@@ -2,7 +2,7 @@
 
 *Overview*
 
-This is an Android app that allows users to manage their tasks efficiently. Users can create, read, update, and delete tasks while also fetching tasks from an API. The app is built with a clean and modern UI, ensuring a seamless task management experience.
+This is an Android app that allows users to manage their tasks efficiently. Users can create, read, update, and delete tasks while also fetching tasks from an API. The app is built with a MVVM architecture and modern UI, ensuring a seamless task management experience.
 
 
 *Features*
